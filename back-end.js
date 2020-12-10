@@ -7,14 +7,13 @@ server.use(bodyParser.json());
 server.use(cors());
 
 server.listen(process.env.PORT || 3000);
-const ONTARIO_BASE_URL = "http://ontariobeerapi.ca/beers";
-const SEARCH_KEY = "kanye";
 
+const ONTARIO_BASE_URL = "http://ontariobeerapi.ca/beers";
 
 
 //route to return list of all employees
 server.get("/beers", (req, res) => {
-    axios.get(`${ONTARIO_BASE_URL}/beers`)
+    axios.get(`${ONTARIO_BASE_URL}`)
         .then(function (res) {
             res.send(res);
         });
