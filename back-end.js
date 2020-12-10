@@ -3,6 +3,22 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const server = express();
 
+//hopin-team
+//jwklnNauD1BhEibr
+//MONGO TESTING
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://hopin-team:jwklnNauD1BhEibr@cluster0.achgy.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, {
+    useNewUrlParser: true
+});
+client.connect(err => {
+    const collection = client.db("test").collection("devices");
+    console.log("MONGO SUCCESS!!!");
+    // perform actions on the collection object
+    client.close();
+});
+
+
 server.use(bodyParser.json());
 server.use(cors());
 
