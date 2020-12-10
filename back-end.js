@@ -12,7 +12,7 @@ const client = new MongoClient(uri, {
     useNewUrlParser: true
 });
 client.connect(err => {
-    const collection = client.db("test").collection("devices");
+    // const collection = client.db("test").collection("devices");
     console.log("MONGO SUCCESS!!!");
     // perform actions on the collection object
     client.close();
