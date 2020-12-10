@@ -8,9 +8,9 @@ server.use(cors());
 
 server.listen(process.env.PORT || 3000);
 
-var favorites = [];
+var userFavorites = ["blue moon", "budweiser"];
 
 //route to return list of all employees
 server.get("/favorites", (req, res) => {
-    res.send("hi");
+    res.send(userFavorites);
 });
