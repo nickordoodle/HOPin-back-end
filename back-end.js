@@ -10,13 +10,13 @@ server.listen(process.env.PORT || 3000);
 
 const ONTARIO_BASE_URL = "http://ontariobeerapi.ca/beers";
 
-
 //route to return list of all employees
 server.get("/beers", (req, res) => {
-    axios.get(`${ONTARIO_BASE_URL}`)
-        .then(function (res) {
-            res.send(res);
-        });
+    // axios.get(`${ONTARIO_BASE_URL}`)
+    //     .then(function (res) {
+    //         // res.send("hi");
+    //     });
+    res.send("hi");
 });
 
 //route to return employees by id
