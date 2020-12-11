@@ -99,21 +99,19 @@ server.put("/user/favorites/:id", (req, res) => {
     // res.send(result[0]);
 });
 
-
 //route to delete a favorite beer by id
 server.delete("/user/favorites/:id", (req, res) => {
     // Set the id from the params
-    const id = req.params.id;
+    const beerId = req.params.id;
     console.log(id);
     let beerIdx = -1;
-    userFavorites.map((beer, idx) => {
-        //TODO Change .id to whatever parameter we name the object
-        if (beer.id === id) {
+    for (let index = 0; index < userFavorites.length; index++) {
+        if (userFavorites[index].id === beerId) {
             //if true, found beer to delete
-            beerIdx = idx;
+            beerIdx = index;
             return;
         }
-    });
+    }
     // Check if we did not find the beer
     if (beerIdx === -1) {
         return res.status(404).send("Beer not found");
