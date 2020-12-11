@@ -3,9 +3,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const server = express();
 
-//hopin-team
-//jwklnNauD1BhEibr
-//MONGO TESTING
 const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://hopin-team:${process.env.MONGO_KEY}@cluster0.achgy.mongodb.net/users?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
