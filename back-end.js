@@ -71,6 +71,7 @@ server.get("/user/favorites", (req, res) => {
     res.send(userFavorites);
 });
 
+
 //route to add new beer favorites for the user
 server.post("/user/favorites", (req, res) => {
     //TODO Check if beer is already in favorites
@@ -103,6 +104,7 @@ server.put("/user/favorites/:id", (req, res) => {
 server.delete("/user/favorites/:id", (req, res) => {
     // Set the id from the params
     const id = req.params.id;
+    console.log(id);
     let beerIdx = -1;
     userFavorites.map((beer, idx) => {
         //TODO Change .id to whatever parameter we name the object
