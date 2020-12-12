@@ -109,15 +109,13 @@ server.delete("/user/favorites/:id", (req, res) => {
     console.log(userFavorites[0]);
     console.log(userFavorites[0].id);
 
-    for (let index = 0; index < userFavorites.length; index++) {
-
-        if (userFavorites[index].id === beerId) {
-            //if true, found beer to delete
+    userFavorites.map((beer, index) => {
+        if (beer.id === beerId) {
+            //if true, found emp to delete
             beerIdx = index;
-            console.log("found beer to delete");
             return;
         }
-    }
+    });
     // Check if we did not find the beer
     if (beerIdx === -1) {
         return res.status(404).send("Beer not found");
