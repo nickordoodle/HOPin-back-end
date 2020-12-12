@@ -110,6 +110,7 @@ server.delete("/user/favorites/:id", (req, res) => {
     console.log(userFavorites[0].id);
 
     userFavorites.map((beer, index) => {
+        console.log(index);
         if (beer.id === beerId) {
             //if true, found emp to delete
             beerIdx = index;
