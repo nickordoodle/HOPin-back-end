@@ -105,7 +105,12 @@ server.delete("/user/favorites/:id", (req, res) => {
     const beerId = req.params.id;
     console.log(id);
     let beerIdx = -1;
+    console.log(userFavorites);
+    console.log(userFavorites[0]);
+    console.log(userFavorites[0].id);
+
     for (let index = 0; index < userFavorites.length; index++) {
+
         if (userFavorites[index].id === beerId) {
             //if true, found beer to delete
             beerIdx = index;
