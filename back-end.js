@@ -114,7 +114,7 @@ server.delete("/user/favorites/:id", (req, res) => {
         console.log("beer obj id: " + beer.id);
         console.log("beer obj index: " + index);
         console.log("target id: " + beerId);
-        if (beer.id === beerId) {
+        if (Number(beer.id) === Number(beerId)) {
             //if true, found emp to delete
             beerIdx = index;
             return;
