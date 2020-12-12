@@ -103,7 +103,7 @@ server.put("/user/favorites/:id", (req, res) => {
 server.delete("/user/favorites/:id", (req, res) => {
     // Set the id from the params
     const beerId = req.params.id;
-    console.log(id);
+    console.log(beerId);
     let beerIdx = -1;
     console.log(userFavorites);
     console.log(userFavorites[0]);
@@ -114,6 +114,7 @@ server.delete("/user/favorites/:id", (req, res) => {
         if (userFavorites[index].id === beerId) {
             //if true, found beer to delete
             beerIdx = index;
+            console.log("found beer to delete");
             return;
         }
     }
