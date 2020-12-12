@@ -103,19 +103,11 @@ server.put("/user/favorites/:id", (req, res) => {
 server.delete("/user/favorites/:id", (req, res) => {
     // Set the id from the params
     const beerId = req.params.id;
-    console.log(beerId);
     let beerIdx = -1;
-    console.log(userFavorites);
-    console.log(userFavorites[0]);
-    console.log(userFavorites[0].id);
 
     userFavorites.map((beer, index) => {
-        console.log("beer obj: " + beer);
-        console.log("beer obj id: " + beer.id);
-        console.log("beer obj index: " + index);
-        console.log("target id: " + beerId);
         if (Number(beer.id) === Number(beerId)) {
-            //if true, found emp to delete
+            //if true, found beer to delete
             beerIdx = index;
             return;
         }
