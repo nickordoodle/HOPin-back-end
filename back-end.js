@@ -82,7 +82,7 @@ server.post("/user/favorites", (req, res) => {
 //route to change userFavorites information by id
 server.put("/user/favorites/:id", (req, res) => {
     const id = req.params.id;
-    const beer = req.body;
+    const beerBodyRequest = req.body;
     let targetIndex = -1;
     userFavorites.map((beer, idx) => {
         if (Number(beer.id) === Number(id)) {
@@ -90,28 +90,29 @@ server.put("/user/favorites/:id", (req, res) => {
             console.log("target index: " + targetIndex);
         }
     });
-    console.log("beer back end id: " + beer.id);
     console.log("id: " + id);
 
-    let result = userFavorites.filter((beer) => beer.id === id);
-    if (beer.name !== undefined) {
-        result[0].name = beer.name;
+    let result = userFavorites.filter((beerData) => beerData.id === id);
+    if (beerBodyRequest.name !== undefined) {
+        userFavorites[targetIndex].name = beerBodyRequest.name;
+        result[0].name = beerBodyRequest.name;
     }
-    if (beer.category !== undefined) {
-        result[0].category = beer.category;
+    if (beerBodyRequest.category !== undefined) {
+        result[0].category = beerBodyRequest.category;
     }
-    if (beer.abv !== undefined) {
-        result[0].abv = beer.abv;
+    if (beerBodyRequest.abv !== undefined) {
+        result[0].abv = beerBodyRequest.abv;
     }
-    if (beer.type !== undefined) {
-        result[0].type = beer.type;
+    if (beerBodyRequest.type !== undefined) {
+        result[0].type = beerBodyRequest.type;
     }
-    if (beer.brewer !== undefined) {
-        result[0].brewer = beer.brewer;
+    if (beerBodyRequest.brewer !== undefined) {
+        result[0].brewer = beerBodyRequest.brewer;
     }
-    if (beer.comments !== undefined) {
-        result[0].comments = beer.comments;
+    if (beerBodyRequest.comments !== undefined) {
+        result[0].comments = beerBodyRequest.comments;
     }
+
     res.send(result[0]);
 });
 
