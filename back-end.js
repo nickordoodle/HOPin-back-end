@@ -83,20 +83,26 @@ server.post("/user/favorites", (req, res) => {
 server.put("/user/favorites/:id", (req, res) => {
     const id = req.params.id;
     const beer = req.body;
-    // let result = userFavorites.filter((beer) => beer.eId === id);
-    // if (beer.fName !== undefined) {
-    //     result[0].fName = beer.fName;
-    // }
-    // if (beer.lName !== undefined) {
-    //     result[0].lName = beer.lName;
-    // }
-    // if (beer.email !== undefined) {
-    //     result[0].email = beer.email;
-    // }
-    // if (beer.role !== undefined) {
-    //     result[0].role = beer.role;
-    // }
-    // res.send(result[0]);
+    let result = userFavorites.filter((beer) => beer.id === id);
+    if (beer.name !== undefined) {
+        result[0].name = beer.name;
+    }
+    if (beer.category !== undefined) {
+        result[0].category = beer.category;
+    }
+    if (beer.abv !== undefined) {
+        result[0].abv = beer.abv;
+    }
+    if (beer.type !== undefined) {
+        result[0].type = beer.type;
+    }
+    if (beer.brewer !== undefined) {
+        result[0].brewer = beer.brewer;
+    }
+    if (beer.comments !== undefined) {
+        result[0].comments = beer.comments;
+    }
+    res.send(result[0]);
 });
 
 //route to delete a favorite beer by id
