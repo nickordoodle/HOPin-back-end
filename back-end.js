@@ -89,10 +89,16 @@ server.put("/user/favorites/:id", (req, res) => {
             targetIndex = idx;
         }
     });
+    // Check if we did not find the beer
+    if (targetIndex === -1) {
+        return res.status(404).send("No beer found with id " + id);
+    }
 
-    let result = userFavorites.filter((beerData) => beerData.id === id);
     if (beerBodyRequest.name !== undefined) {
         userFavorites[targetIndex].name = beerBodyRequest.name;
+    }
+    if (beerBodyRequest.imgUrl !== undefined) {
+        userFavorites[targetIndex].imgUrl = beerBodyRequest.imgUrl;
     }
     if (beerBodyRequest.category !== undefined) {
         userFavorites[targetIndex].category = beerBodyRequest.category;
