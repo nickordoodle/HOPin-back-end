@@ -95,28 +95,28 @@ server.put("/user/favorites/:id", (req, res) => {
         return res.status(404).send("No beer found with id " + id);
     }
 
-    if (beerBodyRequest.name !== undefined) {
+    if (beerBodyRequest.name !== undefined && beerBodyRequest.name !== "") {
         userFavorites[targetIndex].name = beerBodyRequest.name;
     }
-    if (beerBodyRequest.imgUrl !== undefined) {
+    if (beerBodyRequest.imgUrl !== undefined && beerBodyRequest.imgUrl !== "") {
         userFavorites[targetIndex].imgUrl = beerBodyRequest.imgUrl;
     }
-    if (beerBodyRequest.category !== undefined) {
+    if (beerBodyRequest.category !== undefined && beerBodyRequest.category !== "") {
         userFavorites[targetIndex].category = beerBodyRequest.category;
     }
-    if (beerBodyRequest.abv !== undefined) {
+    if (beerBodyRequest.abv !== undefined && beerBodyRequest.abv !== "") {
         userFavorites[targetIndex].abv = beerBodyRequest.abv;
     }
-    if (beerBodyRequest.type !== undefined) {
+    if (beerBodyRequest.type !== undefined && beerBodyRequest.type !== "") {
         userFavorites[targetIndex].type = beerBodyRequest.type;
     }
-    if (beerBodyRequest.brewer !== undefined) {
+    if (beerBodyRequest.brewer !== undefined && beerBodyRequest.brewer !== "") {
         userFavorites[targetIndex].brewer = beerBodyRequest.brewer;
     }
-    if (beerBodyRequest.country !== undefined) {
+    if (beerBodyRequest.country !== undefined && beerBodyRequest.country !== "") {
         userFavorites[targetIndex].country = beerBodyRequest.country;
     }
-    if (beerBodyRequest.comments !== undefined) {
+    if (beerBodyRequest.comments !== undefined && beerBodyRequest.comments !== "") {
         userFavorites[targetIndex].comments = beerBodyRequest.comments;
     }
     res.send(userFavorites[targetIndex]);
