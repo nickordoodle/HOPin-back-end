@@ -87,33 +87,29 @@ server.put("/user/favorites/:id", (req, res) => {
     userFavorites.map((beer, idx) => {
         if (Number(beer.id) === Number(id)) {
             targetIndex = idx;
-            console.log("target index: " + targetIndex);
         }
     });
-    console.log("id: " + id);
 
     let result = userFavorites.filter((beerData) => beerData.id === id);
     if (beerBodyRequest.name !== undefined) {
         userFavorites[targetIndex].name = beerBodyRequest.name;
-        result[0].name = beerBodyRequest.name;
     }
     if (beerBodyRequest.category !== undefined) {
-        result[0].category = beerBodyRequest.category;
+        userFavorites[targetIndex].category = beerBodyRequest.category;
     }
     if (beerBodyRequest.abv !== undefined) {
-        result[0].abv = beerBodyRequest.abv;
+        userFavorites[targetIndex].abv = beerBodyRequest.abv;
     }
     if (beerBodyRequest.type !== undefined) {
-        result[0].type = beerBodyRequest.type;
+        userFavorites[targetIndex].type = beerBodyRequest.type;
     }
     if (beerBodyRequest.brewer !== undefined) {
-        result[0].brewer = beerBodyRequest.brewer;
+        userFavorites[targetIndex].brewer = beerBodyRequest.brewer;
     }
     if (beerBodyRequest.comments !== undefined) {
-        result[0].comments = beerBodyRequest.comments;
+        userFavorites[targetIndex].comments = beerBodyRequest.comments;
     }
-
-    res.send(result[0]);
+    res.send(userFavorites[targetIndex]);
 });
 
 //route to delete a favorite beer by id
