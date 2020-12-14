@@ -112,6 +112,9 @@ server.put("/user/favorites/:id", (req, res) => {
     if (beerBodyRequest.brewer !== undefined) {
         userFavorites[targetIndex].brewer = beerBodyRequest.brewer;
     }
+    if (beerBodyRequest.country !== undefined) {
+        userFavorites[targetIndex].country = beerBodyRequest.country;
+    }
     if (beerBodyRequest.comments !== undefined) {
         userFavorites[targetIndex].comments = beerBodyRequest.comments;
     }
