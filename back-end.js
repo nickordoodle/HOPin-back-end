@@ -24,7 +24,7 @@ server.listen(process.env.PORT || 3000);
 var userFavorites = [{
         "id": 1811,
         "name": "blue moon",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4f3ONUtuWWK9A225iRiOYQtxBKqoMB0f_vQ&usqp=CAU",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4f3ONUtuWWK9A225iRiOYQtxBKqoMB0f_vQ&usqp=CAU",
         "category": "Best 100 Beers",
         "abv": "5.4",
         "type": "Light Orange",
@@ -34,7 +34,7 @@ var userFavorites = [{
     {
         "id": 634,
         "name": "corona",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAzfmVk90f78KN4elNbTyPvtb9YneFg5zsew&usqp=CAU",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAzfmVk90f78KN4elNbTyPvtb9YneFg5zsew&usqp=CAU",
         "category": "central america beers",
         "abv": "4.2",
         "type": "light",
@@ -45,7 +45,7 @@ var userFavorites = [{
     {
         "id": 7982,
         "name": "heinken",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd4FHhLYrprAVnOvWTyBetZIH6Jx_lb8oEWA&usqp=CAU",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd4FHhLYrprAVnOvWTyBetZIH6Jx_lb8oEWA&usqp=CAU",
         "category": "east coast brewskies",
         "abv": "5.0",
         "type": "lager",
@@ -56,7 +56,7 @@ var userFavorites = [{
     {
         "id": 2346,
         "name": "best beers",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkqBbr9JsYBazBjz1uMoOqoyREs5VliS49yQ&usqp=CAU",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkqBbr9JsYBazBjz1uMoOqoyREs5VliS49yQ&usqp=CAU",
         "category": "east coast brewskies",
         "abv": "4.0",
         "type": "lager",
@@ -98,8 +98,8 @@ server.put("/user/favorites/:id", (req, res) => {
     if (beerBodyRequest.name !== undefined && beerBodyRequest.name !== "") {
         userFavorites[targetIndex].name = beerBodyRequest.name;
     }
-    if (beerBodyRequest.imgUrl !== undefined && beerBodyRequest.imgUrl !== "") {
-        userFavorites[targetIndex].imgUrl = beerBodyRequest.imgUrl;
+    if (beerBodyRequest.image_url !== undefined && beerBodyRequest.image_url !== "") {
+        userFavorites[targetIndex].image_url = beerBodyRequest.image_url;
     }
     if (beerBodyRequest.category !== undefined && beerBodyRequest.category !== "") {
         userFavorites[targetIndex].category = beerBodyRequest.category;
