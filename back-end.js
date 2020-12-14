@@ -83,6 +83,16 @@ server.post("/user/favorites", (req, res) => {
 server.put("/user/favorites/:id", (req, res) => {
     const id = req.params.id;
     const beer = req.body;
+    let targetIndex = -1;
+    userFavorites.map((beer, idx) => {
+        if (Number(beer.id) === Number(id)) {
+            targetIndex = idx;
+            console.log("target index: " + targetIndex);
+        }
+    });
+    console.log("beer back end id: " + beer.id);
+    console.log("id: " + id);
+
     let result = userFavorites.filter((beer) => beer.id === id);
     if (beer.name !== undefined) {
         result[0].name = beer.name;
