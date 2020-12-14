@@ -83,6 +83,7 @@ server.post("/user/favorites", (req, res) => {
 server.put("/user/favorites/:id", (req, res) => {
     const id = req.params.id;
     const beerBodyRequest = req.body;
+    console.log("New Put Request with body: " + beerBodyRequest);
     let targetIndex = -1;
     userFavorites.map((beer, idx) => {
         if (Number(beer.id) === Number(id)) {
