@@ -64,6 +64,10 @@ server.use(cors());
 
 server.listen(process.env.PORT || 3000);
 
+//route to get all user beer favorites
+server.get("/", (req, res) => {
+    res.send(test.html);
+});
 
 //route to get all user beer favorites
 server.get("/user/favorites", (req, res) => {
