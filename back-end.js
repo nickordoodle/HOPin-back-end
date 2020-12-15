@@ -160,7 +160,6 @@ server.delete("/user/favorites/:id", (req, res) => {
 
 function isDuplicate(beerId, beerName) {
     userFavorites.map(beer => {
-        console.log(beer);
         console.log(Number(beer.id));
         console.log(Number(beerId));
         console.log(beer.name.toLowerCase);
