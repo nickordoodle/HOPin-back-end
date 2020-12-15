@@ -11,7 +11,7 @@ const client = new MongoClient(uri, {
 
 client.connect(err => {
     const collection = client.db("users").collection("favorites");
-    console.log("Mongo connection opened.");
+    console.log("MONGO SUCCESS!!!");
     // perform actions on the collection object
     client.close();
 });
@@ -79,19 +79,13 @@ server.get("/user/favorites", (req, res) => {
 //route to add new beer favorites for the user
 server.post("/user/favorites", (req, res) => {
     //TODO Check if beer is already in favorites
-    let newId = req.body.id;
-    let newName = req.body.name;
-    if (isDuplicate(newId, newName) === true) {
-        userFavorites.push(req.body);
-        // Send to front end a success response
-        sendSuccessResponse(res);
-        console.log("isduplicate if statement is true");
-        return;
-    } else {
-        sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
-        console.log("isduplicate if statement is false");
-        return;
-    }
+
+    userFavorites.push(req.body);
+    // Send to front end a success response
+    sendSuccessResponse(res);
+    return;
+    // sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
+
 });
 
 //route to change userFavorites information by id
@@ -162,27 +156,12 @@ server.delete("/user/favorites/:id", (req, res) => {
     sendSuccessResponse(res);
 });
 
-
-
 function sendSuccessResponse(res) {
-    res.send("success");
+    res.send({
+        success: "Success"
+    });
 }
 
 function sendFailed404Error(res, msg) {
     res.status(404).send(msg);
-}
-
-function isDuplicate(beerId, beerName) {
-    userFavorites.map(beer => {
-        console.log(Number(beer.id));
-        console.log(Number(beerId));
-        console.log(beer.name.toLowerCase());
-        console.log(beerName.toLowerCase());
-        if (Number(beer.id) === Number(beerId) ||
-            beer.name.toLowerCase() === beerName.toLowerCase()) {
-            console.log("isDuplicate returns true");
-            return true;
-        }
-    });
-    return false;
 }
