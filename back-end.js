@@ -11,7 +11,7 @@ const client = new MongoClient(uri, {
 
 client.connect(err => {
     const collection = client.db("users").collection("favorites");
-    console.log("MONGO SUCCESS!!!");
+    console.log("Mongo connection opened.");
     // perform actions on the collection object
     client.close();
 });
@@ -68,6 +68,10 @@ var userFavorites = [{
 
 //route to get all user beer favorites
 server.get("/user/favorites", (req, res) => {
+    if (userFavorites.length < 1) {
+        res.send("You don't have any favorites yet.");
+        return;
+    }
     res.send(userFavorites);
 });
 
@@ -75,8 +79,15 @@ server.get("/user/favorites", (req, res) => {
 //route to add new beer favorites for the user
 server.post("/user/favorites", (req, res) => {
     //TODO Check if beer is already in favorites
-    userFavorites.push(req.body);
-    res.send("success");
+    const newId = req.body.id;
+    const newName = req.body.name;
+    if (!isDuplicate(newId, newName)) {
+        userFavorites.push(req.body);
+        // Send to front end a success response
+        sendSuccessResponse(res);
+        return;
+    }
+    sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
 });
 
 //route to change userFavorites information by id
@@ -119,7 +130,8 @@ server.put("/user/favorites/:id", (req, res) => {
     if (beerBodyRequest.comments !== undefined && beerBodyRequest.comments !== "") {
         userFavorites[targetIndex].comments = beerBodyRequest.comments;
     }
-    res.send(userFavorites[targetIndex]);
+    // Send to front end a success response
+    sendSuccessResponse(res);
 });
 
 //route to delete a favorite beer by id
@@ -142,8 +154,25 @@ server.delete("/user/favorites/:id", (req, res) => {
     // Update our data
     userFavorites.splice(beerIdx, 1);
 
-    // Send back to front end a success response
+    // Send to front end a success response
+    sendSuccessResponse(res);
+});
+
+function isDuplicate(beerId, beerName) {
+    userFavorites.map(beer => {
+        if (Number(beer.id) === Number(beerId) ||
+            beer.name.toLowerCase === beerName.toLowerCase)
+            return true;
+    });
+    return false;
+}
+
+function sendSuccessResponse(res) {
     res.send({
         success: "Success"
     });
-});
+}
+
+function sendFailed404Error(res, msg) {
+    res.status(404).send(msg);
+}
