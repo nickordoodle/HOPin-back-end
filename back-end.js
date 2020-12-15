@@ -162,11 +162,13 @@ function isDuplicate(beerId, beerName) {
     userFavorites.map(beer => {
         console.log(Number(beer.id));
         console.log(Number(beerId));
-        console.log(beer.name.toLowerCase);
-        console.log(beerName.toLowerCase);
+        console.log(beer.name.toLowerCase());
+        console.log(beerName.toLowerCase());
         if (Number(beer.id) === Number(beerId) ||
-            beer.name.toLowerCase() === beerName.toLowerCase())
+            beer.name.toLowerCase() === beerName.toLowerCase()) {
+            console.log("isDuplicate returns true");
             return true;
+        }
     });
     return false;
 }
