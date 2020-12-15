@@ -81,13 +81,14 @@ server.post("/user/favorites", (req, res) => {
     //TODO Check if beer is already in favorites
     let newId = req.body.id;
     let newName = req.body.name;
-    if (isDuplicate(newId, newName) === false) {
+    if (isDuplicate(newId, newName)) {
+        sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
+    } else {
         userFavorites.push(req.body);
         // Send to front end a success response
         sendSuccessResponse(res);
         return;
     }
-    sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
 });
 
 //route to change userFavorites information by id
