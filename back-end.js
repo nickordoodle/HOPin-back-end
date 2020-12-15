@@ -81,7 +81,7 @@ server.post("/user/favorites", (req, res) => {
     //TODO Check if beer is already in favorites
     let newId = req.body.id;
     let newName = req.body.name;
-    if (!isDuplicate(newId, newName)) {
+    if (isDuplicate(newId, newName) === false) {
         userFavorites.push(req.body);
         // Send to front end a success response
         sendSuccessResponse(res);
