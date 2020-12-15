@@ -121,7 +121,7 @@ server.put("/user/favorites/:id", (req, res) => {
         userFavorites[targetIndex].abv = beerBodyRequest.abv;
     }
     if (beerBodyRequest.style !== undefined && beerBodyRequest.style !== "") {
-        userFavorites[targetIndex].type = beerBodyRequest.type;
+        userFavorites[targetIndex].style = beerBodyRequest.style;
     }
     if (beerBodyRequest.brewer !== undefined && beerBodyRequest.brewer !== "") {
         userFavorites[targetIndex].brewer = beerBodyRequest.brewer;
