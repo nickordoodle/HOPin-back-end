@@ -61,13 +61,12 @@ client.connect(err => {
 
 server.use(bodyParser.json());
 server.use(cors());
-server.use(express.static(__dirname));
 
 server.listen(process.env.PORT || 3000);
 
 //route to get all user beer favorites
 server.get("/", (req, res) => {
-    res.sendFile(__dirname + "test.html");
+    res.send("Hopin Back End!!");
 });
 
 //route to get all user beer favorites
