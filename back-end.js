@@ -80,13 +80,16 @@ server.get("/user/favorites", (req, res) => {
 server.post("/user/favorites", (req, res) => {
     //TODO Check if beer is already in favorites
     let newId = req.body.id;
-    let newName = req.body.name;;
+    let newName = req.body.name;
     if (isDuplicate(newId, newName) === true) {
-        sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
-    } else {
         userFavorites.push(req.body);
         // Send to front end a success response
         sendSuccessResponse(res);
+        console.log("isduplicate if statement is true");
+        return;
+    } else {
+        sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
+        console.log("isduplicate if statement is false");
         return;
     }
 });
