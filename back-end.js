@@ -101,7 +101,7 @@ server.put("/user/favorites/:id", (req, res) => {
     });
     // Check if we did not find the beer
     if (targetIndex === -1) {
-        return res.status(404).send("No beer found with id " + id);
+        return res.status(404).send("Sorry, we couldn't  update your beer. Try again later");
     }
 
     if (beerBodyRequest.name !== undefined && beerBodyRequest.name !== "") {
@@ -147,7 +147,7 @@ server.delete("/user/favorites/:id", (req, res) => {
     });
     // Check if we did not find the beer
     if (beerIdx === -1) {
-        return res.status(404).send("Beer not found");
+        return res.status(404).send("We're sorry, we couldn't delete that beer. Try again later.");
     }
     // Update our data
     userFavorites.splice(beerIdx, 1);
