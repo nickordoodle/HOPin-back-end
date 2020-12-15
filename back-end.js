@@ -9,6 +9,52 @@ const client = new MongoClient(uri, {
     useNewUrlParser: true
 });
 
+var userFavorites = [{
+        "id": 1811,
+        "name": "blue moon",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4f3ONUtuWWK9A225iRiOYQtxBKqoMB0f_vQ&usqp=CAU",
+        "category": "Best 100 Beers",
+        "abv": "5.4",
+        "type": "Light Orange",
+        "brewer": "Budweiser",
+        "comments": []
+    },
+    {
+        "id": 634,
+        "name": "corona",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAzfmVk90f78KN4elNbTyPvtb9YneFg5zsew&usqp=CAU",
+        "category": "central america beers",
+        "abv": "4.2",
+        "type": "light",
+        "brewer": "Corona Inc.",
+        "country": "Mexico",
+        "comments": []
+    },
+    {
+        "id": 7982,
+        "name": "heinken",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd4FHhLYrprAVnOvWTyBetZIH6Jx_lb8oEWA&usqp=CAU",
+        "category": "east coast brewskies",
+        "abv": "5.0",
+        "type": "lager",
+        "brewer": "west brewers",
+        "country": "united states",
+        "comments": []
+    },
+    {
+        "id": 2346,
+        "name": "best beers",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkqBbr9JsYBazBjz1uMoOqoyREs5VliS49yQ&usqp=CAU",
+        "category": "east coast brewskies",
+        "abv": "4.0",
+        "type": "lager",
+        "brewer": "west brewers",
+        "country": "canada",
+        "comments": []
+    }
+];
+
+
 client.connect(err => {
     const collection = client.db("users").collection("favorites");
     console.log("MONGO SUCCESS!!!");
