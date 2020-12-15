@@ -79,8 +79,8 @@ server.get("/user/favorites", (req, res) => {
 //route to add new beer favorites for the user
 server.post("/user/favorites", (req, res) => {
     //TODO Check if beer is already in favorites
-    const newId = req.body.id;
-    const newName = req.body.name;
+    let newId = req.body.id;
+    let newName = req.body.name;
     if (!isDuplicate(newId, newName)) {
         userFavorites.push(req.body);
         // Send to front end a success response
