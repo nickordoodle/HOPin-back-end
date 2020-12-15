@@ -157,9 +157,7 @@ server.delete("/user/favorites/:id", (req, res) => {
 });
 
 function sendSuccessResponse(res) {
-    res.send({
-        success: "success"
-    });
+    res.send("success");
 }
 
 function sendFailed404Error(res, msg) {
