@@ -158,7 +158,7 @@ server.delete("/user/favorites/:id", (req, res) => {
 
 function sendSuccessResponse(res) {
     res.send({
-        success: "Success"
+        success: "success"
     });
 }
 
