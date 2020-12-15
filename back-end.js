@@ -120,7 +120,7 @@ server.put("/user/favorites/:id", (req, res) => {
     if (beerBodyRequest.abv !== undefined && beerBodyRequest.abv !== "") {
         userFavorites[targetIndex].abv = beerBodyRequest.abv;
     }
-    if (beerBodyRequest.type !== undefined && beerBodyRequest.type !== "") {
+    if (beerBodyRequest.style !== undefined && beerBodyRequest.style !== "") {
         userFavorites[targetIndex].type = beerBodyRequest.type;
     }
     if (beerBodyRequest.brewer !== undefined && beerBodyRequest.brewer !== "") {
@@ -128,9 +128,6 @@ server.put("/user/favorites/:id", (req, res) => {
     }
     if (beerBodyRequest.country !== undefined && beerBodyRequest.country !== "") {
         userFavorites[targetIndex].country = beerBodyRequest.country;
-    }
-    if (beerBodyRequest.comments !== undefined && beerBodyRequest.comments !== "") {
-        userFavorites[targetIndex].comments = beerBodyRequest.comments;
     }
     // Send to front end a success response
     sendSuccessResponse(res);
