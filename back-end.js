@@ -13,8 +13,9 @@ var userFavorites = [{
         "id": 1811,
         "name": "blue moon",
         "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4f3ONUtuWWK9A225iRiOYQtxBKqoMB0f_vQ&usqp=CAU",
-        "style": "Light Valencia",
+        "category": "International Hit",
         "abv": "5.4",
+        "style": "Light Valencia",
         "brewer": "Budweiser",
         "country": "USA"
     },
@@ -22,8 +23,9 @@ var userFavorites = [{
         "id": 634,
         "name": "corona",
         "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAzfmVk90f78KN4elNbTyPvtb9YneFg5zsew&usqp=CAU",
-        "style": "stout",
+        "category": "Export",
         "abv": "4.2",
+        "style": "stout",
         "brewer": "Corona Inc.",
         "country": "Mexico"
     },
@@ -31,8 +33,9 @@ var userFavorites = [{
         "id": 7982,
         "name": "heinken",
         "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd4FHhLYrprAVnOvWTyBetZIH6Jx_lb8oEWA&usqp=CAU",
-        "style": "IPA",
+        "category": "Domestic Import",
         "abv": "5.0",
+        "style": "IPA",
         "brewer": "west brewers",
         "country": "united states"
     },
@@ -40,8 +43,9 @@ var userFavorites = [{
         "id": 2346,
         "name": "best beers",
         "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkqBbr9JsYBazBjz1uMoOqoyREs5VliS49yQ&usqp=CAU",
-        "style": "lager",
+        "category": "Domestic Import",
         "abv": "4.0",
+        "style": "lager",
         "brewer": "west brewers",
         "country": "canada"
     }
