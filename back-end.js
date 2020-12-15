@@ -173,9 +173,7 @@ function isDuplicate(beerId, beerName) {
 }
 
 function sendSuccessResponse(res) {
-    res.send({
-        success: "Success"
-    });
+    res.send("Success");
 }
 
 function sendFailed404Error(res, msg) {
