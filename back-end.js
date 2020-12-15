@@ -166,7 +166,7 @@ function isDuplicate(beerId, beerName) {
         console.log(beer.name.toLowerCase);
         console.log(beerName.toLowerCase);
         if (Number(beer.id) === Number(beerId) ||
-            beer.name.toLowerCase === beerName.toLowerCase)
+            beer.name.toLowerCase() === beerName.toLowerCase())
             return true;
     });
     return false;
