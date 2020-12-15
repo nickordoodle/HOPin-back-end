@@ -21,50 +21,6 @@ server.use(cors());
 
 server.listen(process.env.PORT || 3000);
 
-var userFavorites = [{
-        "id": 1811,
-        "name": "blue moon",
-        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4f3ONUtuWWK9A225iRiOYQtxBKqoMB0f_vQ&usqp=CAU",
-        "category": "Best 100 Beers",
-        "abv": "5.4",
-        "type": "Light Orange",
-        "brewer": "Budweiser",
-        "comments": []
-    },
-    {
-        "id": 634,
-        "name": "corona",
-        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAzfmVk90f78KN4elNbTyPvtb9YneFg5zsew&usqp=CAU",
-        "category": "central america beers",
-        "abv": "4.2",
-        "type": "light",
-        "brewer": "Corona Inc.",
-        "country": "Mexico",
-        "comments": []
-    },
-    {
-        "id": 7982,
-        "name": "heinken",
-        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd4FHhLYrprAVnOvWTyBetZIH6Jx_lb8oEWA&usqp=CAU",
-        "category": "east coast brewskies",
-        "abv": "5.0",
-        "type": "lager",
-        "brewer": "west brewers",
-        "country": "united states",
-        "comments": []
-    },
-    {
-        "id": 2346,
-        "name": "best beers",
-        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkqBbr9JsYBazBjz1uMoOqoyREs5VliS49yQ&usqp=CAU",
-        "category": "east coast brewskies",
-        "abv": "4.0",
-        "type": "lager",
-        "brewer": "west brewers",
-        "country": "canada",
-        "comments": []
-    }
-];
 
 //route to get all user beer favorites
 server.get("/user/favorites", (req, res) => {
@@ -79,13 +35,18 @@ server.get("/user/favorites", (req, res) => {
 //route to add new beer favorites for the user
 server.post("/user/favorites", (req, res) => {
     //TODO Check if beer is already in favorites
-
-    userFavorites.push(req.body);
-    // Send to front end a success response
-    sendSuccessResponse(res);
-    return;
-    // sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
-
+    let isFail = false;
+    userFavorites.map(beer => {
+        if (beer.name === req.body.name) {
+            sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
+            isFail = true;
+        }
+    });
+    if (!isFail) {
+        userFavorites.push(req.body);
+        // Send to front end a success response
+        sendSuccessResponse(res);
+    }
 });
 
 //route to change userFavorites information by id
