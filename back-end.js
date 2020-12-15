@@ -9,6 +9,21 @@ const client = new MongoClient(uri, {
     useNewUrlParser: true
 });
 
+function isDuplicate(beerId, beerName) {
+    userFavorites.map(beer => {
+        console.log(Number(beer.id));
+        console.log(Number(beerId));
+        console.log(beer.name.toLowerCase());
+        console.log(beerName.toLowerCase());
+        if (Number(beer.id) === Number(beerId) ||
+            beer.name.toLowerCase() === beerName.toLowerCase()) {
+            console.log("isDuplicate returns true");
+            return true;
+        }
+    });
+    return false;
+}
+
 client.connect(err => {
     const collection = client.db("users").collection("favorites");
     console.log("Mongo connection opened.");
@@ -81,7 +96,8 @@ server.post("/user/favorites", (req, res) => {
     //TODO Check if beer is already in favorites
     let newId = req.body.id;
     let newName = req.body.name;
-    if (isDuplicate(newId, newName)) {
+    var isDuplicate = isDuplicate(newId, newName);
+    if (isDuplicate) {
         sendFailed404Error(res, "Oops, it looks like you already have that beer favorited.");
     } else {
         userFavorites.push(req.body);
@@ -159,20 +175,7 @@ server.delete("/user/favorites/:id", (req, res) => {
     sendSuccessResponse(res);
 });
 
-function isDuplicate(beerId, beerName) {
-    userFavorites.map(beer => {
-        console.log(Number(beer.id));
-        console.log(Number(beerId));
-        console.log(beer.name.toLowerCase());
-        console.log(beerName.toLowerCase());
-        if (Number(beer.id) === Number(beerId) ||
-            beer.name.toLowerCase() === beerName.toLowerCase()) {
-            console.log("isDuplicate returns true");
-            return true;
-        }
-    });
-    return false;
-}
+
 
 function sendSuccessResponse(res) {
     res.send("success");
