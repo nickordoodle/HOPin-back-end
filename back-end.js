@@ -66,7 +66,7 @@ server.use(cors());
 server.listen(process.env.PORT || 3000);
 
 //route to get all user beer favorites
-server.get("/", (req, serverResponse) => {
+server.get("/beers", (req, serverResponse) => {
     axios.get("http://ontariobeerapi.ca/beers").then((res) => {
         data = res.data;
         serverResponse.send(data);
