@@ -66,7 +66,11 @@ server.listen(process.env.PORT || 3000);
 
 //route to get all user beer favorites
 server.get("/", (req, res) => {
-    res.send("Hopin Back End!!");
+    axios.get("http://ontariobeerapi.ca/beers").then((res) => {
+        res.send(res.data);
+        console.log(beers);
+    });
+
 });
 
 //route to get all user beer favorites
